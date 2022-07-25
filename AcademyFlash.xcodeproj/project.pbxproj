@@ -12,6 +12,9 @@
 		277B8FD3288C19E6002DF2D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277B8FD2288C19E6002DF2D8 /* Assets.xcassets */; };
 		277B8FD6288C19E6002DF2D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277B8FD4288C19E6002DF2D8 /* LaunchScreen.storyboard */; };
 		277B8FDF288D15A2002DF2D8 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277B8FDE288D15A2002DF2D8 /* Cards.swift */; };
+		277B8FE4288D264A002DF2D8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277B8FE3288D264A002DF2D8 /* CardCollectionViewCell.swift */; };
+		277B8FE7288E8254002DF2D8 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277B8FE6288E8254002DF2D8 /* UIHelper.swift */; };
+		277B8FE9288E8571002DF2D8 /* Decks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277B8FE8288E8571002DF2D8 /* Decks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		277B8FD5288C19E6002DF2D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		277B8FD7288C19E6002DF2D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277B8FDE288D15A2002DF2D8 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		277B8FE3288D264A002DF2D8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		277B8FE6288E8254002DF2D8 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		277B8FE8288E8571002DF2D8 /* Decks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,8 @@
 		277B8FC8288C19E2002DF2D8 /* AcademyFlash */ = {
 			isa = PBXGroup;
 			children = (
+				277B8FE5288E824A002DF2D8 /* Utilities */,
+				277B8FE0288D25FB002DF2D8 /* Views */,
 				277B8FDD288D1595002DF2D8 /* Models */,
 				277B8FC9288C19E2002DF2D8 /* AppDelegate.swift */,
 				277B8FCD288C19E2002DF2D8 /* ViewController.swift */,
@@ -68,8 +76,33 @@
 			isa = PBXGroup;
 			children = (
 				277B8FDE288D15A2002DF2D8 /* Cards.swift */,
+				277B8FE8288E8571002DF2D8 /* Decks.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		277B8FE0288D25FB002DF2D8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				277B8FE2288D2633002DF2D8 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		277B8FE2288D2633002DF2D8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				277B8FE3288D264A002DF2D8 /* CardCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		277B8FE5288E824A002DF2D8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				277B8FE6288E8254002DF2D8 /* UIHelper.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,8 +175,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				277B8FE9288E8571002DF2D8 /* Decks.swift in Sources */,
+				277B8FE4288D264A002DF2D8 /* CardCollectionViewCell.swift in Sources */,
 				277B8FDF288D15A2002DF2D8 /* Cards.swift in Sources */,
 				277B8FCE288C19E2002DF2D8 /* ViewController.swift in Sources */,
+				277B8FE7288E8254002DF2D8 /* UIHelper.swift in Sources */,
 				277B8FCA288C19E2002DF2D8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +324,6 @@
 				INFOPLIST_FILE = AcademyFlash/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -316,7 +351,6 @@
 				INFOPLIST_FILE = AcademyFlash/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
