@@ -63,6 +63,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func setupComponents() {
+        
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         subjectLabel.translatesAutoresizingMaskIntoConstraints = false
         cardCountLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -76,6 +77,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
         layer.masksToBounds = false
+        isUserInteractionEnabled = true
         
         configureCardCountingLabel()
         configureImageView()
@@ -103,7 +105,6 @@ class CardCollectionViewCell: UICollectionViewCell {
     func configureCardCountingLabel() {
         cardCountLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         cardCountLabel.numberOfLines = 0
-        
         cardCountLabel.textColor = .white
         cardCountLabel.lineBreakMode = .byClipping
         cardCountLabel.preferredMaxLayoutWidth = 100

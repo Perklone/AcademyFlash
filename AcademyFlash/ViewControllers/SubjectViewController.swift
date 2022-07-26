@@ -13,7 +13,7 @@ class SubjectViewController: UIViewController {
         case subject
     }
 
-    var collectionView: UICollectionView!
+    var deckCollectionView: UICollectionView!
     var decks: [Decks] = [Decks(title: "Swift Fundamentals", image: "SwiftIcon",cardCount: 1)]
     
     override func viewDidLoad() {
@@ -36,26 +36,36 @@ class SubjectViewController: UIViewController {
         
     }
     func configureCollectionView() {
-        collectionView              = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createFlowLayout(in: view))
-        view.addSubview(collectionView)
-        collectionView.delegate     = self
-        collectionView.dataSource   = self
-        collectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
+        deckCollectionView              = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createFlowLayout(in: view))
+        view.addSubview(deckCollectionView)
+    
+        deckCollectionView.delegate     = self
+        deckCollectionView.dataSource   = self
+        
+        deckCollectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
         
     }
 }
 
-extension SubjectViewController: UICollectionViewDelegate,UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension SubjectViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ deckCollectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as! CardCollectionViewCell
+    func collectionView(_ deckCollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = deckCollectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as! CardCollectionViewCell
         cell.set(deck: decks[0])
         return cell
     }
-    
+}
 
+extension SubjectViewController: UICollectionViewDelegate {
+    func collectionView(_ deckCollectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let pracVC = PracticeViewController()
+        pracVC.modalPresentationStyle = .fullScreen
+        pracVC.modalTransitionStyle = .flipHorizontal
+        present(pracVC, animated: true,completion: nil)
+    }
+    
 }

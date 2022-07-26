@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
         
-        
-        window?.rootViewController = PracticeViewController()
+        let navigation = UINavigationController(rootViewController: SubjectViewController())
+        window?.rootViewController = navigation
         
         return true
     }
