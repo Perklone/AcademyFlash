@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27116234288FD230005EF375 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27116233288FD230005EF375 /* PracticeViewController.swift */; };
+		27116236288FD4FA005EF375 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27116235288FD4FA005EF375 /* CardView.swift */; };
 		277B8FCA288C19E2002DF2D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277B8FC9288C19E2002DF2D8 /* AppDelegate.swift */; };
-		277B8FCE288C19E2002DF2D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277B8FCD288C19E2002DF2D8 /* ViewController.swift */; };
+		277B8FCE288C19E2002DF2D8 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277B8FCD288C19E2002DF2D8 /* SubjectViewController.swift */; };
 		277B8FD3288C19E6002DF2D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277B8FD2288C19E6002DF2D8 /* Assets.xcassets */; };
 		277B8FD6288C19E6002DF2D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277B8FD4288C19E6002DF2D8 /* LaunchScreen.storyboard */; };
 		277B8FDF288D15A2002DF2D8 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277B8FDE288D15A2002DF2D8 /* Cards.swift */; };
@@ -18,9 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27116233288FD230005EF375 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
+		27116235288FD4FA005EF375 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		277B8FC6288C19E2002DF2D8 /* AcademyFlash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcademyFlash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277B8FC9288C19E2002DF2D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		277B8FCD288C19E2002DF2D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		277B8FCD288C19E2002DF2D8 /* SubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
 		277B8FD2288C19E6002DF2D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		277B8FD5288C19E6002DF2D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		277B8FD7288C19E6002DF2D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27116232288FD078005EF375 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				277B8FCD288C19E2002DF2D8 /* SubjectViewController.swift */,
+				27116233288FD230005EF375 /* PracticeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		277B8FBD288C19E2002DF2D8 = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +73,11 @@
 		277B8FC8288C19E2002DF2D8 /* AcademyFlash */ = {
 			isa = PBXGroup;
 			children = (
+				27116232288FD078005EF375 /* ViewControllers */,
 				277B8FE5288E824A002DF2D8 /* Utilities */,
 				277B8FE0288D25FB002DF2D8 /* Views */,
 				277B8FDD288D1595002DF2D8 /* Models */,
 				277B8FC9288C19E2002DF2D8 /* AppDelegate.swift */,
-				277B8FCD288C19E2002DF2D8 /* ViewController.swift */,
 				277B8FD2288C19E6002DF2D8 /* Assets.xcassets */,
 				277B8FD4288C19E6002DF2D8 /* LaunchScreen.storyboard */,
 				277B8FD7288C19E6002DF2D8 /* Info.plist */,
@@ -85,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				277B8FE2288D2633002DF2D8 /* Cells */,
+				27116235288FD4FA005EF375 /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,8 +192,10 @@
 				277B8FE9288E8571002DF2D8 /* Decks.swift in Sources */,
 				277B8FE4288D264A002DF2D8 /* CardCollectionViewCell.swift in Sources */,
 				277B8FDF288D15A2002DF2D8 /* Cards.swift in Sources */,
-				277B8FCE288C19E2002DF2D8 /* ViewController.swift in Sources */,
+				27116234288FD230005EF375 /* PracticeViewController.swift in Sources */,
+				277B8FCE288C19E2002DF2D8 /* SubjectViewController.swift in Sources */,
 				277B8FE7288E8254002DF2D8 /* UIHelper.swift in Sources */,
+				27116236288FD4FA005EF375 /* CardView.swift in Sources */,
 				277B8FCA288C19E2002DF2D8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,6 @@ import UIKit
 
 struct Decks: Hashable {
     var title: String
-    var image: UIImage
-    
+    var image: String
+    var cardCount: Int
 }

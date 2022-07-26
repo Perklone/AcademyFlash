@@ -11,7 +11,7 @@ enum UIHelper {
     static func createFlowLayout(in view:UIView) -> UICollectionViewFlowLayout {
         let width = view.bounds.width
         let padding: CGFloat = 21
-        let itemSpacing:CGFloat = 21
+        
         let availableWidth = width - (padding*2)
         
         

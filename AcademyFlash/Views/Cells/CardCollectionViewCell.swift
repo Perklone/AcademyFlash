@@ -10,9 +10,10 @@ import UIKit
 class CardCollectionViewCell: UICollectionViewCell {
     static let identifier = "CardCollectionCell"
     
+    let cardCountLabel = UILabel()
     let iconImageView = UIImageView()
     let subjectLabel = UILabel()
-    let padding:CGFloat = 10
+    let padding:CGFloat = 20
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,8 +22,12 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func set(deck: Decks) {
+        cardCountLabel.text = String(deck.cardCount)
+        
+        if(deck.cardCount == 1) { cardCountLabel.text = "\(deck.cardCount) Card"}
+        else { cardCountLabel.text = "\(deck.cardCount) Cards" }
         subjectLabel.text = deck.title
-        iconImageView.image = deck.image
+        iconImageView.image = UIImage(named: deck.image)
     }
     
     required init?(coder: NSCoder) {
@@ -30,28 +35,37 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func configure() {
+        addSubview(cardCountLabel)
         addSubview(iconImageView)
         addSubview(subjectLabel)
         
         layer.cornerRadius = 17
         
         NSLayoutConstraint.activate([
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -padding),
+            cardCountLabel.topAnchor.constraint(equalTo: topAnchor, constant: padding),
+            cardCountLabel.leadingAnchor.constraint(equalTo: subjectLabel.leadingAnchor),
+            cardCountLabel.heightAnchor.constraint(equalToConstant: 13)
+        ])
+        NSLayoutConstraint.activate([
+            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -5),
+            iconImageView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -padding*1.5),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor)
         ])
         NSLayoutConstraint.activate([
-            subjectLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            subjectLabel.topAnchor.constraint(equalTo: cardCountLabel.bottomAnchor),
             subjectLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: padding),
-            
+            subjectLabel.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor, constant: -padding),
+            subjectLabel.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -padding),
             subjectLabel.heightAnchor.constraint(equalToConstant: 131),
-            subjectLabel.widthAnchor.constraint(equalToConstant: 188)
+//            subjectLabel.widthAnchor.constraint(equalToConstant: 188),
         ])
+        
     }
     
     func setupComponents() {
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         subjectLabel.translatesAutoresizingMaskIntoConstraints = false
+        cardCountLabel.translatesAutoresizingMaskIntoConstraints = false
         
         backgroundColor = UIColor(red: 20/255, green: 33/255, blue: 61/255, alpha: 1)
         
@@ -63,6 +77,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         layer.rasterizationScale = UIScreen.main.scale
         layer.masksToBounds = false
         
+        configureCardCountingLabel()
         configureImageView()
         configureSubjectLabel()
     }
@@ -72,6 +87,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     func configureImageView() {
         iconImageView.image = UIImage(systemName: "questionmark")
         iconImageView.clipsToBounds = true
+        iconImageView.contentMode = .scaleAspectFit
     }
     
     func configureSubjectLabel() {
@@ -79,11 +95,18 @@ class CardCollectionViewCell: UICollectionViewCell {
         subjectLabel.numberOfLines = 0
         subjectLabel.adjustsFontForContentSizeCategory = true
         subjectLabel.adjustsFontSizeToFitWidth = true
-        subjectLabel.minimumScaleFactor = 0.80
+        subjectLabel.minimumScaleFactor = 0.65
         subjectLabel.textColor = .white
         subjectLabel.lineBreakMode = .byClipping
         subjectLabel.preferredMaxLayoutWidth = 188
+    }
+    func configureCardCountingLabel() {
+        cardCountLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        cardCountLabel.numberOfLines = 0
         
+        cardCountLabel.textColor = .white
+        cardCountLabel.lineBreakMode = .byClipping
+        cardCountLabel.preferredMaxLayoutWidth = 100
     }
 }
 
