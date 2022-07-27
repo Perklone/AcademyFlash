@@ -28,17 +28,18 @@ class CardView: UIView {
     
     func configureView() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor(red: 20/255, green: 33/255, blue: 61/255, alpha: 1)
+        backgroundColor = Color.mainBlue
+        layer.cornerRadius = 8
+        layer.masksToBounds = false
         
-        layer.cornerRadius = 8 
-        layer.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5).cgColor
+        layer.shadowColor = Color.mainShadow.cgColor
         layer.shadowOffset = .zero
         layer.shadowRadius = 5.0
         layer.shadowOpacity = 1
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
-        layer.masksToBounds = false
     }
+    
     func configureLabel() {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 36, weight: .semibold)
@@ -57,7 +58,6 @@ class CardView: UIView {
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding)
-            
         ])
     }
 

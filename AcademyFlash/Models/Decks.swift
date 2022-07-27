@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct Decks: Hashable {
     var title: String
