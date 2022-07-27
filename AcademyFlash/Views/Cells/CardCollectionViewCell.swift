@@ -22,10 +22,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func set(deck: DeckCoreData) {
-        cardCountLabel.text = String(deck.cardCount)
-        
-        if(deck.cardCount == 1) { cardCountLabel.text = "\(deck.cardCount) Card"}
-        else { cardCountLabel.text = "\(deck.cardCount) Cards" }
+        cardCountLabel.text = deck.cardCount == 1 ? "\(deck.cardCount) Card" : "\(deck.cardCount) Cards"
         subjectLabel.text = deck.title
         iconImageView.image = UIImage(named: deck.image!)
     }
