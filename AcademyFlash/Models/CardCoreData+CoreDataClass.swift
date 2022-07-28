@@ -1,5 +1,5 @@
 //
-//  DeckCoreData+CoreDataClass.swift
+//  CardCoreData+CoreDataClass.swift
 //  AcademyFlash
 //
 //  Created by Rizky Maulana on 28/07/22.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(DeckCoreData)
-public class DeckCoreData: NSManagedObject {
+@objc(CardCoreData)
+public class CardCoreData: NSManagedObject {
 
 }

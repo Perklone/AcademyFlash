@@ -36,7 +36,7 @@ class SubjectViewController: UIViewController {
     }
     
     @objc func dummy() {}
-    
+
     func configureCollectionView() {
         deckCollectionView              = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createFlowLayout(in: view))
         view.addSubview(deckCollectionView)
@@ -56,9 +56,7 @@ extension SubjectViewController: UICollectionViewDataSource {
     func collectionView(_ deckCollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = indexPath.row
         let cell = deckCollectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as! CardCollectionViewCell
-        if let deck = decks?[index] {
-            cell.set(deck: deck)
-        }
+        if let deck = decks?[index] { cell.set(deck: deck) }
         
         return cell
     }
@@ -68,14 +66,13 @@ extension SubjectViewController: UICollectionViewDelegate {
     func collectionView(_ deckCollectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let pracVC = PracticeViewController()
         pracVC.modalPresentationStyle = .fullScreen
-//        pracVC.modalTransitionStyle = .flipHorizontal
+        pracVC.deckNameLabel.text = decks?[indexPath.row].title
         present(pracVC, animated: true,completion: nil)
     }
 }
 
 extension SubjectViewController {
     //MARK: CoreData Implementation
-    
     func fetchDecks() {
         do {
             self.decks = try context.fetch(DeckCoreData.fetchRequest())

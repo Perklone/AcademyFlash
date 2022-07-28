@@ -10,6 +10,7 @@ import UIKit
 
 class PracticeViewController: UIViewController {
     
+    
     var deckNameLabel = UILabel()
     var card = CardView()
     var flipButton = AFButton(color: Color.mainBlue, title: "Show Answer")
