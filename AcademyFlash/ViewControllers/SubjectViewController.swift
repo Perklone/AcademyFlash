@@ -18,7 +18,6 @@ class SubjectViewController: UIViewController {
     var deckCollectionView: UICollectionView!
     var decks: [DeckCoreData]?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchDecks()
@@ -35,12 +34,34 @@ class SubjectViewController: UIViewController {
         navigationItem.rightBarButtonItem   = addButton
     }
     
-    @objc func dummy() {}
-
+    @objc func dummy() {
+        let deck = DeckCoreData(context: context)
+        deck.title = "Dummy Data"
+        deck.image = "SwiftIcon"
+        deck.cardCount = 0
+        deck.cards = []
+        do {
+            try context.save()
+        } catch {}
+        fetchDecks()
+    }
+    
+    @objc func dummyDel() {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "DeckCoreData")
+        
+        let batch = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try context.execute(batch)
+        } catch{}
+        fetchDecks()
+    }
+    
     func configureCollectionView() {
         deckCollectionView              = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createFlowLayout(in: view))
         view.addSubview(deckCollectionView)
-    
+        deckCollectionView.backgroundColor = Color.backgroundColor
+
         deckCollectionView.delegate     = self
         deckCollectionView.dataSource   = self
         
@@ -57,7 +78,6 @@ extension SubjectViewController: UICollectionViewDataSource {
         let index = indexPath.row
         let cell = deckCollectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as! CardCollectionViewCell
         if let deck = decks?[index] { cell.set(deck: deck) }
-        
         return cell
     }
 }
@@ -67,6 +87,8 @@ extension SubjectViewController: UICollectionViewDelegate {
         let pracVC = PracticeViewController()
         pracVC.modalPresentationStyle = .fullScreen
         pracVC.deckNameLabel.text = decks?[indexPath.row].title
+        pracVC.modalTransitionStyle = .flipHorizontal
+        pracVC.deck = decks?[indexPath.row]
         present(pracVC, animated: true,completion: nil)
     }
 }
@@ -81,4 +103,5 @@ extension SubjectViewController {
             }
         } catch {}
     }
+    
 }

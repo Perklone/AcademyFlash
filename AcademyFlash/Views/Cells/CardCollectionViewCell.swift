@@ -22,7 +22,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func set(deck: DeckCoreData) {
-        cardCountLabel.text = deck.cardCount == 1 ? "\(deck.cardCount) Card" : "\(deck.cardCount) Cards"
+        cardCountLabel.text = deck.cardCount <= 1 ? "\(deck.cardCount) Card" : "\(deck.cardCount) Cards"
         subjectLabel.text = deck.title
         iconImageView.image = UIImage(named: deck.image!)
     }
@@ -53,7 +53,7 @@ class CardCollectionViewCell: UICollectionViewCell {
             subjectLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: padding),
             subjectLabel.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor, constant: -padding),
             subjectLabel.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -padding),
-            subjectLabel.heightAnchor.constraint(equalToConstant: 131),
+            
 //            subjectLabel.widthAnchor.constraint(equalToConstant: 188),
         ])
         
@@ -87,6 +87,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         iconImageView.image = UIImage(systemName: "questionmark")
         iconImageView.clipsToBounds = true
         iconImageView.contentMode = .scaleAspectFit
+        iconImageView.tintColor = Color.mainOrange
     }
     
     func configureSubjectLabel() {

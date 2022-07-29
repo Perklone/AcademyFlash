@@ -2,18 +2,20 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CardCoreData" representedClassName="CardCoreData" syncable="YES" codeGenerationType="category">
         <attribute name="answer" optional="YES" attributeType="String"/>
+        <attribute name="easiness" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="interval" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="question" optional="YES" attributeType="String"/>
+        <attribute name="repetition" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeckCoreData" inverseName="cards" inverseEntity="DeckCoreData"/>
     </entity>
     <entity name="DeckCoreData" representedClassName="DeckCoreData" syncable="YES" codeGenerationType="category">
         <attribute name="cardCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardCoreData" inverseName="deck" inverseEntity="CardCoreData"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardCoreData"/>
     </entity>
     <elements>
+        <element name="CardCoreData" positionX="-54" positionY="-9" width="128" height="119"/>
         <element name="DeckCoreData" positionX="-63" positionY="-18" width="128" height="89"/>
-        <element name="CardCoreData" positionX="-54" positionY="-9" width="128" height="89"/>
     </elements>
 </model>

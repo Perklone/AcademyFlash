@@ -14,4 +14,5 @@ enum Color {
     static let mainShadow = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
     static let mainGreen = UIColor(red: 33/255, green: 113/255, blue: 53/255, alpha: 1)
     static let mainRed = UIColor(red: 164/255, green: 43/255, blue: 36/255, alpha: 1)
+    static let backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.50)
 }

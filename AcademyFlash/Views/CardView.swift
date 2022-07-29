@@ -15,11 +15,12 @@ class CardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+        
     }
     
     convenience init() {
         self.init(frame: .zero)
-        label.text = "What is Protocol-Delegate Pattern used for?"
+        
     }
     
     required init?(coder: NSCoder) {

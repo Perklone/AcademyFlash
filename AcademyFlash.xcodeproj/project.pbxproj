@@ -21,6 +21,7 @@
 		27CFD75328913174005CE595 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27CFD75128913174005CE595 /* Model.xcdatamodeld */; };
 		27CFD76828923A7A005CE595 /* DeckCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CFD76428923A7A005CE595 /* DeckCoreData+CoreDataClass.swift */; };
 		27CFD76A28923A7A005CE595 /* CardCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CFD76628923A7A005CE595 /* CardCoreData+CoreDataClass.swift */; };
+		27DBC9B02893131900B148D0 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DBC9AF2893131900B148D0 /* Date+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		27CFD75228913174005CE595 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		27CFD76428923A7A005CE595 /* DeckCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeckCoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		27CFD76628923A7A005CE595 /* CardCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardCoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		27DBC9AF2893131900B148D0 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				277B8FE6288E8254002DF2D8 /* UIHelper.swift */,
 				27CFD74F2890E5A5005CE595 /* Constant.swift */,
+				27DBC9AF2893131900B148D0 /* Date+Ext.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			files = (
 				27CFD74E2890DEE4005CE595 /* AFButton.swift in Sources */,
 				27CFD76828923A7A005CE595 /* DeckCoreData+CoreDataClass.swift in Sources */,
+				27DBC9B02893131900B148D0 /* Date+Ext.swift in Sources */,
 				277B8FE4288D264A002DF2D8 /* CardCollectionViewCell.swift in Sources */,
 				27116234288FD230005EF375 /* PracticeViewController.swift in Sources */,
 				277B8FCE288C19E2002DF2D8 /* SubjectViewController.swift in Sources */,
