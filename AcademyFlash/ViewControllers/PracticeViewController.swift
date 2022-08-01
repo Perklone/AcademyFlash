@@ -11,7 +11,7 @@ import CoreData
 class PracticeViewController: UIViewController {
     
     let context                    = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var deck:DeckCoreData?
+    var deckUsed:DeckCoreData?
     var cards: [CardCoreData]   = []
     var deckNameLabel           = UILabel()
     var card                    = CardView()
@@ -25,7 +25,7 @@ class PracticeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchCards()
+        fetchCards(from: deckUsed!)
         insertSubviews()
         configure()
         
@@ -42,7 +42,7 @@ class PracticeViewController: UIViewController {
     }
     
     
-    
+    //MARK: Layouting
     func configure() {
         let padding:CGFloat = 30
         let height = view.bounds.height
@@ -100,10 +100,10 @@ class PracticeViewController: UIViewController {
     }
     
     func configureButtons() {
-        dummyButton.addTarget(self, action: #selector(dummy), for: .touchUpInside)
-        dummyButton.isHidden = true
+        dummyButton.isHidden = false
         easyButton.tag = 1
         hardButton.tag = 0
+        dummyButton.addTarget(self, action: #selector(dummy2), for: .touchUpInside)
         flipButton.addTarget(self, action: #selector(flipCard), for: .touchUpInside)
         easyButton.addTarget(self, action: #selector(calculatePractice(sender:)), for: .touchUpInside)
         hardButton.addTarget(self, action: #selector(calculatePractice(sender:)), for: .touchUpInside)
@@ -115,9 +115,68 @@ class PracticeViewController: UIViewController {
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.image = UIImage(systemName: "arrowshape.turn.up.backward")
         backButton.tintColor = Color.mainOrange
+        backButton.isHidden = false
     }
 }
+//MARK: @objc Function
+extension PracticeViewController {
+    
+    @objc func unwindTo() {
+        self.view.window?.rootViewController?.dismiss(animated: true)
+    }
+    
+    func fetchCards(from deck: DeckCoreData) {
+//        guard let title = deckUsed?.title else { return }
+        
+        let request = CardCoreData.fetchRequest() as NSFetchRequest<CardCoreData>
+        let sort = NSSortDescriptor(key: "value", ascending: true)
+        let pred = NSPredicate(format: "deckOwner = %@",deck)
+        
+        request.sortDescriptors = [sort]
+        request.predicate = pred
+        
+        do {
+            self.cards = try context.fetch(request)
+            DispatchQueue.main.async {
+                self.card.label.text = self.cards.first?.question
+            }
+        } catch {}
+    }
+    
+    @objc func dummy() {
+        guard let deckUsed = deckUsed else { return }
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CardCoreData")
+        let batch = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try context.execute(batch)
+            self.cards = try context.fetch(CardCoreData.fetchRequest())
+        } catch {}
+        
+        deckUsed.cardCount = Int64(cards.count)
+        
+        do{
+            try self.context.save()
+        }catch {}
+        
+        print(cards.count)
+    }
+    @objc func dummy2() {
+        let cs = cardSeeder()
+        guard let deckUsed = deckUsed else { return }
+        cs.seedTemplateCard(deckUsed)
+        fetchCards(from: deckUsed)
 
+        deckUsed.cardCount = Int64(cards.count)
+//        cards.forEach { CardCoreData in
+//            deckUsed.addToCards(CardCoreData)
+//        }
+        do{
+            try self.context.save()
+        }catch {}
+    }
+    
+}
 //MARK: Spaced Algorithm
 extension PracticeViewController {
     @objc func calculatePractice(sender: UIButton) {
@@ -140,13 +199,9 @@ extension PracticeViewController {
             repetitions+=1
         }
 
-        if (repetitions <= 1) {
-            interval = 1
-        } else if (repetitions == 2) {
-            interval = 6
-        } else {
-            interval = Int64(round(Float(interval) * easiness))
-        }
+        if (repetitions <= 1) { interval = 1 }
+        else if (repetitions == 2) { interval = 6 }
+        else { interval = Int64(round(Float(interval) * easiness)) }
         
         if let card = card {
             card.value = now + milisecondsInDay * interval
@@ -155,10 +210,9 @@ extension PracticeViewController {
             card.interval = interval
         }
         
-        do {
-            try self.context.save()
-        } catch {}
-        fetchCards()
+        do { try self.context.save() }
+        catch {}
+        fetchCards(from: deckUsed!)
     }
     
     @objc func flipCard() {
@@ -169,56 +223,5 @@ extension PracticeViewController {
             card.label.text = cards.first?.question
             isFlipped.toggle()
         }
-    }
-}
-
-//MARK: @OBJC Function
-extension PracticeViewController {
-    
-    @objc func unwindTo() {
-        self.view.window?.rootViewController?.dismiss(animated: true)
-    }
-    
-    func fetchCards() {
-        let request = CardCoreData.fetchRequest() as NSFetchRequest<CardCoreData>
-        let sort = NSSortDescriptor(key: "value", ascending: true)
-        request.sortDescriptors = [sort]
-        do {
-            self.cards = try context.fetch(request)
-            DispatchQueue.main.async {
-                self.card.label.text = self.cards.first?.question
-            }
-        } catch {}
-    }
-    
-    @objc func dummy() {
-        let cs = cardSeeder()
-        guard let deck = deck else { return }
-        cs.seedTemplateCard(deck)
-        fetchCards()
-
-        deck.cardCount = Int64(cards.count)
-        cards.forEach { CardCoreData in
-            deck.addToCards(CardCoreData)
-        }
-        do{
-            try self.context.save()
-        }catch {}
-        
-
-//        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CardCoreData")
-//
-//        let batch = NSBatchDeleteRequest(fetchRequest: fetch)
-//
-//        do {
-//            try context.execute(batch)
-//            self.cards = try context.fetch(CardCoreData.fetchRequest())
-//        } catch{}
-//        guard let deck = deck else { return }
-//        deck.cardCount = Int64(cards.count)
-//        do{
-//            try self.context.save()
-//        }catch {}
-//        print(cards.count)
     }
 }

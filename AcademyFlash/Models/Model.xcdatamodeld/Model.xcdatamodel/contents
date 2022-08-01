@@ -7,15 +7,16 @@
         <attribute name="question" optional="YES" attributeType="String"/>
         <attribute name="repetition" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="deckOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeckCoreData" inverseName="cards" inverseEntity="DeckCoreData"/>
     </entity>
     <entity name="DeckCoreData" representedClassName="DeckCoreData" syncable="YES" codeGenerationType="category">
         <attribute name="cardCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardCoreData"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardCoreData" inverseName="deckOwner" inverseEntity="CardCoreData"/>
     </entity>
     <elements>
-        <element name="CardCoreData" positionX="-54" positionY="-9" width="128" height="119"/>
+        <element name="CardCoreData" positionX="-54" positionY="-9" width="128" height="134"/>
         <element name="DeckCoreData" positionX="-63" positionY="-18" width="128" height="89"/>
     </elements>
 </model>

@@ -36,7 +36,7 @@ class SubjectViewController: UIViewController {
     
     @objc func dummy() {
         let deck = DeckCoreData(context: context)
-        deck.title = "Dummy Data"
+        deck.title = "Swift Fundamentals"
         deck.image = "SwiftIcon"
         deck.cardCount = 0
         deck.cards = []
@@ -88,7 +88,7 @@ extension SubjectViewController: UICollectionViewDelegate {
         pracVC.modalPresentationStyle = .fullScreen
         pracVC.deckNameLabel.text = decks?[indexPath.row].title
         pracVC.modalTransitionStyle = .flipHorizontal
-        pracVC.deck = decks?[indexPath.row]
+        pracVC.deckUsed = decks?[indexPath.row]
         present(pracVC, animated: true,completion: nil)
     }
 }

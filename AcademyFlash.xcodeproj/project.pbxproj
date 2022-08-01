@@ -87,9 +87,6 @@
 				277B8FE5288E824A002DF2D8 /* Utilities */,
 				277B8FE0288D25FB002DF2D8 /* Views */,
 				277B8FDD288D1595002DF2D8 /* Models */,
-				277B8FC9288C19E2002DF2D8 /* AppDelegate.swift */,
-				277B8FD2288C19E6002DF2D8 /* Assets.xcassets */,
-				277B8FD4288C19E6002DF2D8 /* LaunchScreen.storyboard */,
 				277B8FD7288C19E6002DF2D8 /* Info.plist */,
 			);
 			path = AcademyFlash;
@@ -127,9 +124,12 @@
 		277B8FE5288E824A002DF2D8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				277B8FE6288E8254002DF2D8 /* UIHelper.swift */,
+				27DBC9B22893DF8C00B148D0 /* Extension */,
+				277B8FC9288C19E2002DF2D8 /* AppDelegate.swift */,
+				277B8FD2288C19E6002DF2D8 /* Assets.xcassets */,
 				27CFD74F2890E5A5005CE595 /* Constant.swift */,
-				27DBC9AF2893131900B148D0 /* Date+Ext.swift */,
+				277B8FD4288C19E6002DF2D8 /* LaunchScreen.storyboard */,
+				277B8FE6288E8254002DF2D8 /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -140,6 +140,14 @@
 				27CFD74D2890DEE4005CE595 /* AFButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		27DBC9B22893DF8C00B148D0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				27DBC9AF2893131900B148D0 /* Date+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
